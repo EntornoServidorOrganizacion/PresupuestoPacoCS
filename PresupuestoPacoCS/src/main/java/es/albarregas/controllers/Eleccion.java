@@ -31,19 +31,7 @@ public class Eleccion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Eleccion</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Eleccion at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,6 +61,11 @@ public class Eleccion extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        String url = null;
+        if(request.getParameter("check").equals("ckEdificio")){
+            url = "JSP/edificio.jsp";
+        }
+        request.getRequestDispatcher(url).forward(request,response);
     }
 
     /**

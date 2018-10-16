@@ -9,9 +9,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="../CSS/normalizer.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/estilo.css">
+
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file = "../INC/cabecera.jsp" %>
+        <img id="imagenFinal" src="../IMAGE/imagenCabecera.png">
+        <div id="principal">
+
+
+        </div>
+        <%@include file = "../INC/footer.jsp" %>
     </body>
 </html>
+
