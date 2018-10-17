@@ -16,10 +16,9 @@
     <body>
         <%@include file = "../INC/cabecera.jsp" %>
 
-
         <div id="principal">
 
-            <form action="<%=request.getContextPath()%>/Edificio" method="post">
+            <form action="Edificio" method="post">
 
 
                 <h1>Detalle de la póliza de edificios</h1>
@@ -60,10 +59,10 @@
                             </select>
                         </td>
                         <td>
-                            <input name="madera" type="radio" checked/>Madera<br/>
-                            <input name="hormigon" type="radio"/>Hormigón
+                            <input name="tipoCons" type="radio" checked/>Madera<br/>
+                            <input name="tipoCons" type="radio"/>Hormigón
                         </td>
-                        <td><select name="tipoEdificio" value="">
+                        <td><select name="valorMercado" value="">
                                 <option value="25000" selected>menos de 50.000</option>
                                 <option value="50001">entre 50.001 y 80.000</option>
                                 <option value="80001">entre 80.001 y 100.000</option>
