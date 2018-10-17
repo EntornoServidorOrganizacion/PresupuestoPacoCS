@@ -7,20 +7,25 @@ package es.albarregas.models;
 
 import es.albarregas.beans.ContenidoBeans;
 import es.albarregas.beans.EdificioBeans;
+import es.albarregas.beans.EleccionBeans;
+import es.albarregas.controllers.Eleccion;
 
 /**
  *
  * @author paco
  */
 public class CalcularCuota {
-    private static ContenidoBeans contenido = new ContenidoBeans();
-    private static EdificioBeans edificio = new EdificioBeans();
+    static EleccionBeans eleccion = new EleccionBeans();
+    static ContenidoBeans contenido = new ContenidoBeans();
+    static EdificioBeans edificio = new EdificioBeans();
+
+ 
     //cuotaBasica = el valor en el mercado * 0,005
-    private static double cuotaBasica;
-    private static double prima;
+    static double cuotaBasica;
+    static double prima;
     
     public static double primaEdificio() {
-        cuotaBasica = edificio.getValorMercado() * 0.005;
+        /*cuotaBasica = edificio.getValorMercado() * 0.005;
         if(edificio.getTipoVivienda().equals("piso")){
             cuotaBasica = cuotaBasica * 0.95;
         }else if(edificio.getTipoVivienda().equals("casa")){
@@ -51,14 +56,14 @@ public class CalcularCuota {
         
         if(edificio.getTipoCons().equals("madera")){
             prima += prima * 0.1;
-        }
-        
+        }*/
+        prima = 1000;
         return prima;
     }
     
     public static double primaContenido() {
-        cuotaBasica = contenido.getCantidadAse() * 0.008;
-        if(contenido.isDaniosAcc() == true){
+        /*cuotaBasica = contenido.getCantidadAse() * 0.008;
+        if(contenido.getDaniosAcc() != null){
             prima = prima * 1.25;
         }
         
@@ -66,7 +71,8 @@ public class CalcularCuota {
             prima -= prima * 0.1;
         }else if(contenido.getFranquicia().equals("1.000")){
             prima -= prima * 0.2;
-        }
+        }*/
+        prima = 200;
         return prima;
     }
     

@@ -93,7 +93,8 @@ public class Edificio extends HttpServlet {
         edificio.setValorMercado(valorMercado);
         //CUOTA
         edificio.setPrima(CalcularCuota.primaEdificio());
-        
+        double primaE = edificio.getPrima();
+        request.setAttribute("primaE", primaE);
         
         
         //Obtenemos el objeto miEleccion de la sesion para saber si hay que pedir los datos de contenidos o no

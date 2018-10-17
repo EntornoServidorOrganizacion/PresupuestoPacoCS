@@ -6,13 +6,14 @@
 package es.albarregas.beans;
 
 import es.albarregas.models.CalcularCuota;
+import java.io.Serializable;
 
 /**
  *
  * @author paco
  */
-public class ContenidoBeans {
-    private boolean daniosAcc;
+public class ContenidoBeans implements Serializable{
+    private String daniosAcc;
     private int cantidadAse;
     private String franquicia;
     private double prima;
@@ -20,14 +21,14 @@ public class ContenidoBeans {
     /**
      * @return the daniosAcc
      */
-    public boolean isDaniosAcc() {
+    public String getDaniosAcc() {
         return daniosAcc;
     }
 
     /**
      * @param daniosAcc the daniosAcc to set
      */
-    public void setDaniosAcc(boolean daniosAcc) {
+    public void setDaniosAcc(String daniosAcc) {
         this.daniosAcc = daniosAcc;
     }
 

@@ -111,7 +111,7 @@ public class Eleccion extends HttpServlet {
         sesion.setAttribute("eleccion", eleccion);
         
         //redirigimos a la url a la que se desea ir
-        response.sendRedirect(url);
+        request.getRequestDispatcher(url).forward(request,response);
     }
 
     /**

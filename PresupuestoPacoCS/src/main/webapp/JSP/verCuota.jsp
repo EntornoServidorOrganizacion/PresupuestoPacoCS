@@ -4,6 +4,8 @@
     Author     : paco
 --%>
 
+<%@page import="es.albarregas.beans.EdificioBeans"%>
+<%@page import="es.albarregas.beans.ContenidoBeans"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,9 +17,11 @@
     </head>
     <body>
         <%@include file = "../INC/cabecera.jsp" %>
-        <img id="imagenFinal" src="../IMAGE/imagenCabecera.png">
         <div id="principal">
 
+            <h1>La prima de edificio es de: <%=request.getAttribute("primaE")%>€</h1>
+            <br>
+            <h1>La prima de contenido es de: <%=request.getAttribute("primaC")%>€</h1>
 
         </div>
         <%@include file = "../INC/footer.jsp" %>

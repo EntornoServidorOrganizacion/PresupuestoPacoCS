@@ -34,7 +34,7 @@
 
                     <tr>
                         <td>
-                            <input class="checkboxtext" type="checkbox" name="daniosAccidentales"/>
+                            <input value="daniosAccidentales" class="checkboxtext" type="checkbox" name="daniosAccidentales"/>
                         </td>
                         
                         <td><select name="cantidadAsegurar" value="">
@@ -46,9 +46,9 @@
                             </select>
                         </td>
                         <td>
-                            <input type="radio" checked/>Ninguna<br/>
-                            <input type="radio"/>500<br/>
-                            <input type="radio"/>1.000
+                            <input value="Ninguna" name="radio" type="radio" checked/>Ninguna<br/>
+                            <input value="500" name="radio" type="radio"/>500<br/>
+                            <input value="1.000" name="radio" type="radio"/>1.000
                         </td>
                         
                     </tr>

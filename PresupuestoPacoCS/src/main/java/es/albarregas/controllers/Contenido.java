@@ -5,6 +5,9 @@
  */
 package es.albarregas.controllers;
 
+import es.albarregas.beans.ContenidoBeans;
+import es.albarregas.beans.EleccionBeans;
+import es.albarregas.models.CalcularCuota;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,7 +35,7 @@ public class Contenido extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -62,15 +66,47 @@ public class Contenido extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    }
+        
+        HttpSession sesion = request.getSession();
+        EleccionBeans eleccion = new EleccionBeans();
+        String url = "JSP/verCuota.jsp";
+        ContenidoBeans contenido = new ContenidoBeans();
+        
+        
+        String daniosAcc = request.getParameter("daniosAccidentales");
+        int cantidadAse = Integer.parseInt(request.getParameter("cantidadAsegurar"));
+        String franquicia = request.getParameter("radio");
+        
+        //introducir datos donde corresponde
+        contenido.setDaniosAcc(daniosAcc);
+        contenido.setCantidadAse(cantidadAse);
+        contenido.setFranquicia(franquicia);
+        //CUOTA
+        contenido.setPrima(CalcularCuota.primaContenido());
+        double primaC = contenido.getPrima();
+        request.setAttribute("primaC", primaC);
+        
+        eleccion = (EleccionBeans) sesion.getAttribute("eleccion");
+        
+        //pasamos por sesión el objeto de ContenidoBeans 
+        sesion.setAttribute("contenido", contenido);
+        
+        //redirigimos a la url a la que se desea ir
+        request.getRequestDispatcher(url).forward(request,response);
+        
+}
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
+/**
+ * Returns a short description of the servlet.
+ *
+ * @return a String containing servlet description
+ */
+@Override
+        public String 
+
+getServletInfo
+
+() {
         return "Short description";
     }// </editor-fold>
 

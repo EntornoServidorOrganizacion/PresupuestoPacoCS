@@ -6,12 +6,13 @@
 package es.albarregas.beans;
 
 import es.albarregas.models.CalcularCuota;
+import java.io.Serializable;
 
 /**
  *
  * @author paco
  */
-public class EdificioBeans {
+public class EdificioBeans implements Serializable{
     private double prima;
     private String tipoVivienda;
     private int numHabitaciones;

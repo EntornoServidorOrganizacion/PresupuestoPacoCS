@@ -5,11 +5,13 @@
  */
 package es.albarregas.beans;
 
+import java.io.Serializable;
+
 /**
  *
  * @author paco
  */
-public class EleccionBeans {
+public class EleccionBeans implements Serializable{
     private boolean edificio;
     private boolean contenido;
 
