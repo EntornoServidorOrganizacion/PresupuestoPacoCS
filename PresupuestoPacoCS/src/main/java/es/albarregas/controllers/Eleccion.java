@@ -100,6 +100,13 @@ public class Eleccion extends HttpServlet {
             url = "JSP/edificio.jsp";
         }
         
+        //si uno de los dos no está seleccionado, se irá al formulario correspondiente
+        if(eleccion.isEdificio() && eleccion.isContenido() == false){
+            url = "JSP/edificio.jsp";
+        } else if(eleccion.isEdificio() == false && eleccion.isContenido()){
+            url = "JSP/contenido.jsp";
+        }
+        
         //pasamos por sesión el objeto de EleccionBeans 
         sesion.setAttribute("eleccion", eleccion);
         
