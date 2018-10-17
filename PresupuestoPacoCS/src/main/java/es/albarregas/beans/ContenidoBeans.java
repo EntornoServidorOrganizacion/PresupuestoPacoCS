@@ -5,6 +5,8 @@
  */
 package es.albarregas.beans;
 
+import es.albarregas.models.CalcularCuota;
+
 /**
  *
  * @author paco
@@ -68,7 +70,7 @@ public class ContenidoBeans {
      * @param prima the prima to set
      */
     public void setPrima(double prima) {
-        this.prima = EleccionBeans.primaContenido();
+        this.prima = CalcularCuota.primaContenido();
     }
 
     

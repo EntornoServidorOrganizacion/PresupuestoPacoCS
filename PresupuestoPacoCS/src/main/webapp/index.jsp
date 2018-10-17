@@ -26,9 +26,9 @@
                 <p>Por favor, elija que desea asegurar (marque uno sólo o los dos en las casillas)</p>
                 <br>
                 <p>¿Qué tipo de seguro desea?</p>
-                <input name="check" value="ckEdificio" type="checkbox" checked="checked" />Seguro de edificios
+                <input name="check1" value="ckEdificio" type="checkbox" checked="checked" />Seguro de edificios
                 <br>
-                <input name="check" value="ckContenido" type="checkbox" checked="checked" />Seguro de contenido
+                <input name="check2" value="ckContenido" type="checkbox" checked="checked" />Seguro de contenido
                 <br><br>
                 <button type="submit" name="enviar" value="Enviar"/>Enviar
 

@@ -18,7 +18,7 @@
         
         <div id="principal">
 
-            <form action="" method="post">
+            <form action="<%=request.getContextPath()%>/Contenido" method="post">
 
 
                 <h1>Detalle de la póliza de contenidos</h1>

@@ -19,7 +19,7 @@
 
         <div id="principal">
 
-            <form action="Edificio" method="post">
+            <form action="<%=request.getContextPath()%>/Edificio" method="post">
 
 
                 <h1>Detalle de la póliza de edificios</h1>

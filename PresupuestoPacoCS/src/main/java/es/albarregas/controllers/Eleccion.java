@@ -5,6 +5,7 @@
  */
 package es.albarregas.controllers;
 
+import es.albarregas.beans.EleccionBeans;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -62,10 +64,47 @@ public class Eleccion extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         String url = null;
-        if(request.getParameter("check").equals("ckEdificio")){
+        EleccionBeans eleccion = new EleccionBeans();
+        HttpSession sesion = request.getSession();
+        boolean edificio;
+        boolean contenido;
+        
+        //volver al index si los dos checkbox están desmarcados
+        if(request.getParameter("check1") == null && request.getParameter("check2") == null){
+            url = "index.jsp";
+        }
+
+        
+        //comprobar los checkbox por separado
+        //checkbox de edificio 
+        if(request.getParameter("check1") != null){
+            edificio = true;
+            url = "JSP/edificio.jsp";
+        }else{
+            edificio = false;
+        }
+        
+        //checkbox de contenido.
+        if (request.getParameter("check2") != null) {
+            contenido = true;
+            //url = "JSP/contenido.jsp";
+        }else{
+            contenido = false;
+        }
+        
+        eleccion.setEdificio(edificio);
+        eleccion.setContenido(contenido);
+        
+        //si edificio (boolean) es true, nos dirige a su formulario (edificio.jsp)
+        if(eleccion.isEdificio()){
             url = "JSP/edificio.jsp";
         }
-        request.getRequestDispatcher(url).forward(request,response);
+        
+        //pasamos por sesión el objeto de EleccionBeans 
+        sesion.setAttribute("eleccion", eleccion);
+        
+        //redirigimos a la url a la que se desea ir
+        response.sendRedirect(url);
     }
 
     /**
