@@ -8,3 +8,5 @@ En este ejercicio se debe hacer una aplicación de una aseguradaora con la que s
 *Commit 17/10/2018 a las 11:51 horas. He redirigido al formulario que corresponde si una de las dos opciones no está seleccionada. Por ejemplo si no selecciona el seguro de edificios pero sí selecciona el seguro de contenido, al darle a eviar iremos al formulario del contenido.
 
 *Commit 17/10/2018 a las 14:09 horas. He realizado el controlador de Edificio pero no redirige a ninguna página, en la barra del navegador aparece como null.
+
+*Commit 17/10/2018 a las 21:39 horas. La redirección entre las páginas funciona, hay algún fallo en el modelo de CalcularCuota. Tampoco calcula las dos cuotas, sólo una de ellas.
