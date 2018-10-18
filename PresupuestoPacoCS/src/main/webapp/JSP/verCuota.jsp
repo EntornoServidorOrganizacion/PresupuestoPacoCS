@@ -66,7 +66,7 @@
             %>
                     <h1>Seguro de contenido</h1>
                     <%
-                        if(contenido.isDaniosAcc()){
+                        if(contenido.isDaniosAcc() == true){
                             siOno = "Sí";
                         } else {
                             siOno = "No";

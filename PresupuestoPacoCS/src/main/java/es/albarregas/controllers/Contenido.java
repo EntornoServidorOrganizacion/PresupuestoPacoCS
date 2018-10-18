@@ -66,47 +66,45 @@ public class Contenido extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        
+
         HttpSession sesion = request.getSession();
         EleccionBeans eleccion = new EleccionBeans();
         String url = "JSP/verCuota.jsp";
         ContenidoBeans contenido = new ContenidoBeans();
-        
-        
-        boolean daniosAcc = Boolean.parseBoolean(request.getParameter("daniosAccidentales"));
+
         int cantidadAse = Integer.parseInt(request.getParameter("cantidadAsegurar"));
         int franquicia = Integer.parseInt(request.getParameter("radio"));
         
         //introducir datos donde corresponde
-        contenido.setDaniosAcc(daniosAcc);
+        if (request.getParameter("daniosAccidentales") != null) {
+            contenido.setDaniosAcc(true);
+        } else {
+            contenido.setDaniosAcc(false);
+        }
+
         contenido.setCantidadAse(cantidadAse);
         contenido.setFranquicia(franquicia);
         //CUOTA
         contenido.setPrima(CalcularCuota.primaContenido(contenido));
 
-        
         eleccion = (EleccionBeans) sesion.getAttribute("eleccion");
-        
+
         //pasamos por sesión el objeto de ContenidoBeans 
         sesion.setAttribute("contenido", contenido);
-        
+
         //redirigimos a la url a la que se desea ir
-        request.getRequestDispatcher(url).forward(request,response);
-        
-}
+        request.getRequestDispatcher(url).forward(request, response);
 
-/**
- * Returns a short description of the servlet.
- *
- * @return a String containing servlet description
- */
-@Override
-        public String 
+    }
 
-getServletInfo
-
-() {
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String
+            getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
