@@ -17,3 +17,5 @@ En este ejercicio se debe hacer una aplicación de una aseguradaora con la que s
 
 
 *Commit 18/10/2018 a las 16:14 horas. Comprobado el cálculo del presupuesto. El resultado de calcular el seguro del edificio es correcto, falla el cálculo del contenido, probablemente sea en la comprobación del checkbox que siempre la opción es no marcada aunque se marque.
+
+*Commit 18/10/2018 a las 17:20 horas. Todo funciona perfectamente. Falta poder traducir la página a ingles/español.
