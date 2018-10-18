@@ -59,8 +59,8 @@
                             </select>
                         </td>
                         <td>
-                            <input name="tipoCons" type="radio" checked/>Madera<br/>
-                            <input name="tipoCons" type="radio"/>Hormigón
+                            <input value="madera" name="tipoCons" type="radio" checked/>Madera<br/>
+                            <input value="homigon" name="tipoCons" type="radio"/>Hormigón
                         </td>
                         <td><select name="valorMercado" value="">
                                 <option value="25000" selected>menos de 50.000</option>
