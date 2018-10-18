@@ -102,6 +102,7 @@ public class Eleccion extends HttpServlet {
         //si uno de los dos no está seleccionado, se irá al formulario correspondiente
         if(eleccion.isEdificio() && eleccion.isContenido() == false){
             url = "JSP/edificio.jsp";
+            sesion.invalidate();
         } else if(eleccion.isEdificio() == false && eleccion.isContenido()){
             url = "JSP/contenido.jsp";
         }
