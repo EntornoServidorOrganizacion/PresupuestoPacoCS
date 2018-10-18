@@ -18,14 +18,14 @@
     </head>
 
     <%
-            
-            HttpSession sesion = request.getSession();
-            EdificioBeans edificio = (EdificioBeans)sesion.getAttribute("edificio");
-            ContenidoBeans contenido = (ContenidoBeans)sesion.getAttribute("contenido");
-            String mh;
-            String siOno;
-            String franquicia;
-            double total=0;
+
+        HttpSession sesion = request.getSession();
+        EdificioBeans edificio = (EdificioBeans) sesion.getAttribute("edificio");
+        ContenidoBeans contenido = (ContenidoBeans) sesion.getAttribute("contenido");
+        String mh;
+        String siOno;
+        String franquicia;
+        double total = 0;
     %>
 
 
@@ -33,62 +33,80 @@
         <%@include file = "../INC/cabecera.jsp" %>
         <div id="principal">
             <%
-                if(edificio != null){
+                if (edificio != null) {
                     total = total + edificio.getPrima();
             %>
-                    <h1>Seguro de edificio:</h1>
-                    <p>- Tipo de edificio: <%=edificio.getTipoVivienda()%></p>
-                    <p>- Número de habitaciones: <%=edificio.getNumHabitaciones()%></p>
-                    <p>- Fecha de construcción: <%=edificio.getAnioCons()%></p>
-                    <%
-                        if(edificio.getTipoCons().startsWith("mad")){
-                            mh = "Madera";
-                        }else{
-                            mh = "Hormigón";
-                        }
-                    
-                    %>
-                    <p>- Tipo de construcción: <%=mh%></p>
-                    <p>- Valor estimado del mercado: <%=edificio.getValorMercado()%>€</p>
-                    <br/>
+            <h1>Seguro de edificio</h1>
+            <p>- Tipo de edificio: <%=edificio.getTipoVivienda()%></p>
+            <p>- Número de habitaciones: <%=edificio.getNumHabitaciones()%></p>
+            <p>- Fecha de construcción: <%=edificio.getAnioCons()%></p>
+            <%
+                if (edificio.getTipoCons().startsWith("mad")) {
+                    mh = "Madera";
+                } else {
+                    mh = "Hormigón";
+                }
+
+            %>
+            <p>- Tipo de construcción: <%=mh%></p>
+            <p>- Valor estimado del mercado: <%=edificio.getValorMercado()%>€</p>
+            <%
+                if (contenido != null) {
+            %>
+            <p><small>(Total del seguro del edificio: <%=Math.round(edificio.getPrima() * 100.0) / 100.0%>€)</small></p>
+
             <%
                 }
-                if(edificio != null && contenido != null){
             %>
-                <hr/>
+            <br/>
             <%
                 }
+                if (edificio != null && contenido != null) {
             %>
-            
-            <%
-            if(contenido != null){
-                    total = total + contenido.getPrima();
-            %>
-                    <h1>Seguro de contenido</h1>
-                    <%
-                        if(contenido.isDaniosAcc() == true){
-                            siOno = "Sí";
-                        } else {
-                            siOno = "No";
-                        }
-                    %>
-                    <p>- Cubrir daños accidentales: <%=siOno%></p>
-                    <p>- Cantidad que se quiere asegurar: <%=contenido.getCantidadAse()%>€</p>
-                    <%
-                        if(contenido.getFranquicia() == 0){
-                            franquicia = "Ninguna";
-                        }else{
-                            franquicia = Integer.toString(contenido.getFranquicia())+"€";
-                        }
-                    %>
-                    <p>- Franquicia: <%=franquicia%></p>
-                    <br/>
-                    
+            <hr/>
             <%
                 }
             %>
 
-                <h2>El TOTAL de su seguro es de: <%=Math.round(total*100.0)/100.0%>€</h2>
+            <%
+                if (contenido != null) {
+                    total = total + contenido.getPrima();
+            %>
+            <h1>Seguro de contenido</h1>
+            <%
+                if (contenido.isDaniosAcc() == true) {
+                    siOno = "Sí";
+                } else {
+                    siOno = "No";
+                }
+            %>
+            <p>- Cubrir daños accidentales: <%=siOno%></p>
+            <p>- Cantidad que se quiere asegurar: <%=contenido.getCantidadAse()%>€</p>
+            <%
+                if (contenido.getFranquicia() == 0) {
+                    franquicia = "Ninguna";
+                } else {
+                    franquicia = Integer.toString(contenido.getFranquicia()) + "€";
+                }
+            %>
+            <p>- Franquicia: <%=franquicia%></p>
+            
+            <%
+                if (edificio != null) {
+            %>
+            <p><small>(Total del seguro del contenido: <%=Math.round(contenido.getPrima() * 100.0) / 100.0%>€)</small></p>
+
+            <%
+                }
+            %>
+            
+            <br/>
+
+            <%
+                }
+            %>
+
+            <h2>El TOTAL de su seguro es de: <%=Math.round(total * 100.0) / 100.0%>€</h2>
             <button id="botonMenu" type="submit" name="menu" value="Menu"><a id="enlaceMenu" href="<%=request
                     .getContextPath()%>/index.jsp">Menú</a> </button>
         </div>

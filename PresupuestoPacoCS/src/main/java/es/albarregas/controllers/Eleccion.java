@@ -79,7 +79,7 @@ public class Eleccion extends HttpServlet {
         //checkbox de edificio 
         if(request.getParameter("check1") != null){
             edificio = true;
-            url = "JSP/edificio.jsp";
+            //url = "JSP/edificio.jsp";
         }else{
             edificio = false;
         }
