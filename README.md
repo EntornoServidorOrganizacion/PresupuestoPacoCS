@@ -21,3 +21,5 @@ En este ejercicio se debe hacer una aplicación de una aseguradaora con la que s
 *Commit 18/10/2018 a las 17:20 horas. Todo funciona perfectamente. Falta poder traducir la página a ingles/español.
 
 *Commit 18/10/2018 a las 17:47 horas. Pequeños cambios hechos en visualizar el resultado. Si se eligen los dos seguros, se muestra el valor de cada seguro más el total de los dos.
+
+*Commit 18/10/2018 a las 20:38 horas. He comentado el código en más lugares para aclarar algunas cosas.
