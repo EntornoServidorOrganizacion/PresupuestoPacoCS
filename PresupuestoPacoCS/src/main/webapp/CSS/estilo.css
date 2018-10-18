@@ -105,3 +105,11 @@ tr{
     margin: 100%;
     text-align: center;
 }
+
+#enlaceMenu{
+    color: #fff;
+    text-decoration: none;
+}
+#enlaceMenu:hover{
+    color: #000;
+}

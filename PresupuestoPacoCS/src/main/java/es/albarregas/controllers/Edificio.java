@@ -92,10 +92,7 @@ public class Edificio extends HttpServlet {
         edificio.setTipoCons(tipoCons);
         edificio.setValorMercado(valorMercado);
         //CUOTA
-        edificio.setPrima(CalcularCuota.primaEdificio());
-        double primaE = edificio.getPrima();
-        request.setAttribute("primaE", primaE);
-        
+        edificio.setPrima(CalcularCuota.primaEdificio(edificio));
         
         //Obtenemos el objeto miEleccion de la sesion para saber si hay que pedir los datos de contenidos o no
         eleccion = (EleccionBeans) sesion.getAttribute("eleccion");
@@ -107,7 +104,7 @@ public class Edificio extends HttpServlet {
         }
         
         sesion.setAttribute("edificio", edificio);
-        //request.setAttribute("cuota", edificio.getPrima());
+ 
         //redirigimos a la url a la que se desea ir
         request.getRequestDispatcher(url).forward(request,response);
     }

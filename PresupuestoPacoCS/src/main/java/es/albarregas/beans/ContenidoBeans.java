@@ -13,52 +13,38 @@ import java.io.Serializable;
  * @author paco
  */
 public class ContenidoBeans implements Serializable{
-    private String daniosAcc;
-    private int cantidadAse;
-    private String franquicia;
+    private boolean daniosAcc;
+    private int cantidadAse; 
+    private int franquicia; 
     private double prima;
+    
+    
 
-    /**
-     * @return the daniosAcc
-     */
-    public String getDaniosAcc() {
+    public boolean isDaniosAcc() {
         return daniosAcc;
     }
 
-    /**
-     * @param daniosAcc the daniosAcc to set
-     */
-    public void setDaniosAcc(String daniosAcc) {
+    public void setDaniosAcc(boolean daniosAcc) {
         this.daniosAcc = daniosAcc;
     }
 
-    /**
-     * @return the cantidadAse
-     */
     public int getCantidadAse() {
         return cantidadAse;
     }
 
-    /**
-     * @param cantidadAse the cantidadAse to set
-     */
     public void setCantidadAse(int cantidadAse) {
         this.cantidadAse = cantidadAse;
     }
 
-    /**
-     * @return the franquicia
-     */
-    public String getFranquicia() {
+    public int getFranquicia() {
         return franquicia;
     }
 
-    /**
-     * @param franquicia the franquicia to set
-     */
-    public void setFranquicia(String franquicia) {
+    public void setFranquicia(int franquicia) {
         this.franquicia = franquicia;
     }
+
+    
 
     /**
      * @return the prima
@@ -71,7 +57,7 @@ public class ContenidoBeans implements Serializable{
      * @param prima the prima to set
      */
     public void setPrima(double prima) {
-        this.prima = CalcularCuota.primaContenido();
+        this.prima = prima;
     }
 
     

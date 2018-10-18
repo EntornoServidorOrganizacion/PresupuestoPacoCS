@@ -4,6 +4,7 @@
     Author     : paco
 --%>
 
+<%@page import="es.albarregas.models.CalcularCuota"%>
 <%@page import="es.albarregas.beans.EdificioBeans"%>
 <%@page import="es.albarregas.beans.ContenidoBeans"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,15 +16,69 @@
         <link rel="stylesheet" type="text/css" href="../CSS/estilo.css">
 
     </head>
+
+    <%
+            
+            HttpSession sesion = request.getSession();
+            EdificioBeans edificio = (EdificioBeans)sesion.getAttribute("edificio");
+            ContenidoBeans contenido = (ContenidoBeans)sesion.getAttribute("contenido");
+            String siOno;
+            double total=0;
+    %>
+
+
     <body>
         <%@include file = "../INC/cabecera.jsp" %>
         <div id="principal">
+            <%
+                if(edificio != null){
+                    total = total + edificio.getPrima();
+            %>
+                    <h1>Seguro de edificio:</h1>
+                    <p>Tipo de edificio: <%=edificio.getTipoVivienda()%></p>
+                    <p>Número de habitaciones: <%=edificio.getNumHabitaciones()%></p>
+                    <p>Fecha de construcción: <%=edificio.getAnioCons()%></p>
+                    <p>Tipo de construcción: <%=edificio.getTipoCons()%></p>
+                    <p>Valor estimado del mercado: <%=edificio.getValorMercado()%></p>
+                    <br/>
+            <%
+                }
+                if(edificio != null && contenido != null){
+            %>
+                <hr/>
+            <%
+                }
+            %>
+            
+            <%
+            if(contenido != null){
+                    total = total + contenido.getPrima();
+            %>
+                    <h1>Seguro de contenido</h1>
+                    <%
+                        if(contenido.isDaniosAcc() == false){
+                            siOno = "No";
+                        } else {
+                            siOno = "Sí";
+                        }
+                    %>
+                    <p>Cubrir daños accidentales: <%=siOno%></p>
+                    <p>Cantidad que se quiere asegurar: <%=contenido.getCantidadAse()%></p>
+                    <p>Franquicia: <%=contenido.getFranquicia()%></p>
+                    <br/>
+                    
+            <%
+                }
+            %>
 
-            <h1>La prima de edificio es de: <%=request.getAttribute("primaE")%>€</h1>
-            <br>
-            <h1>La prima de contenido es de: <%=request.getAttribute("primaC")%>€</h1>
-
+                <h2>El TOTAL de su seguro es de: <%=Math.round(total*100.0)/100.0%>€</h2>
+            <button id="botonMenu" type="submit" name="menu" value="Menu"><a id="enlaceMenu" href="<%=request
+                    .getContextPath()%>/index.jsp">Menú</a> </button>
         </div>
+        <%
+            //invalidar sesión para que el resultado siempre se muestre correcto
+            sesion.invalidate();
+        %>
         <%@include file = "../INC/footer.jsp" %>
     </body>
 </html>

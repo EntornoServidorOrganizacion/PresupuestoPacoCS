@@ -46,9 +46,9 @@
                             </select>
                         </td>
                         <td>
-                            <input value="Ninguna" name="radio" type="radio" checked/>Ninguna<br/>
+                            <input value="0" name="radio" type="radio" checked/>Ninguna<br/>
                             <input value="500" name="radio" type="radio"/>500<br/>
-                            <input value="1.000" name="radio" type="radio"/>1.000
+                            <input value="1000" name="radio" type="radio"/>1.000
                         </td>
                         
                     </tr>

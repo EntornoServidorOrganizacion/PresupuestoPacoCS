@@ -31,7 +31,7 @@ public class EdificioBeans implements Serializable{
      * @param prima the prima to set
      */
     public void setPrima(double prima) {
-        this.prima = CalcularCuota.primaEdificio();
+        this.prima = prima;
     }
 
     /**

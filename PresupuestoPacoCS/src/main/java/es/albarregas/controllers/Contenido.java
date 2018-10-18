@@ -67,24 +67,24 @@ public class Contenido extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
+        
         HttpSession sesion = request.getSession();
         EleccionBeans eleccion = new EleccionBeans();
         String url = "JSP/verCuota.jsp";
         ContenidoBeans contenido = new ContenidoBeans();
         
         
-        String daniosAcc = request.getParameter("daniosAccidentales");
+        boolean daniosAcc = Boolean.parseBoolean(request.getParameter("daniosAccidentales"));
         int cantidadAse = Integer.parseInt(request.getParameter("cantidadAsegurar"));
-        String franquicia = request.getParameter("radio");
+        int franquicia = Integer.parseInt(request.getParameter("radio"));
         
         //introducir datos donde corresponde
         contenido.setDaniosAcc(daniosAcc);
         contenido.setCantidadAse(cantidadAse);
         contenido.setFranquicia(franquicia);
         //CUOTA
-        contenido.setPrima(CalcularCuota.primaContenido());
-        double primaC = contenido.getPrima();
-        request.setAttribute("primaC", primaC);
+        contenido.setPrima(CalcularCuota.primaContenido(contenido));
+
         
         eleccion = (EleccionBeans) sesion.getAttribute("eleccion");
         
