@@ -14,3 +14,6 @@ En este ejercicio se debe hacer una aplicación de una aseguradaora con la que s
 *Commit 18/10/2018 a las 14:02 horas. El funcionamiento es correcto. Debo comprobar que los cálculos sean los correctos. Cuando muestra los datos del seguro de edificio, en el tipo de construcción se muestra siempre un "on", debo cambiarlo para que aparezca "madera" u "hormigón".
 
 *Commit 18/10/2018 a las 14:12 horas. Se ha hecho un cambio en como se muestra la franquicia del contenido para que salga la palabra Ninguna en caso de que sea igual a 0. El funcionamiento es correcto. Debo comprobar que los cálculos sean los correctos. Cuando muestra los datos del seguro de edificio, en el tipo de construcción se muestra siempre un "on", debo cambiarlo para que aparezca "madera" u "hormigón".
+
+
+*Commit 18/10/2018 a las 16:14 horas. Comprobado el cálculo del presupuesto. El resultado de calcular el seguro del edificio es correcto, falla el cálculo del contenido, probablemente sea en la comprobación del checkbox que siempre la opción es no marcada aunque se marque.
