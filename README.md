@@ -10,3 +10,5 @@ En este ejercicio se debe hacer una aplicación de una aseguradaora con la que s
 *Commit 17/10/2018 a las 14:09 horas. He realizado el controlador de Edificio pero no redirige a ninguna página, en la barra del navegador aparece como null.
 
 *Commit 17/10/2018 a las 21:39 horas. La redirección entre las páginas funciona, hay algún fallo en el modelo de CalcularCuota. Tampoco calcula las dos cuotas, sólo una de ellas.
+
+*Commit 18/10/2018 a las 14:02 horas. El funcionamiento es correcto. Debo comprobar que los cálculos sean los correctos. Cuando muestra los datos del seguro de edificio, en el tipo de construcción se muestra siempre un "on", debo cambiarlo para que aparezca "madera" u "hormigón".
