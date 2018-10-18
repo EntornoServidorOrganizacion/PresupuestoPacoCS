@@ -23,6 +23,7 @@
             EdificioBeans edificio = (EdificioBeans)sesion.getAttribute("edificio");
             ContenidoBeans contenido = (ContenidoBeans)sesion.getAttribute("contenido");
             String siOno;
+            String franquicia;
             double total=0;
     %>
 
@@ -35,11 +36,11 @@
                     total = total + edificio.getPrima();
             %>
                     <h1>Seguro de edificio:</h1>
-                    <p>Tipo de edificio: <%=edificio.getTipoVivienda()%></p>
-                    <p>Número de habitaciones: <%=edificio.getNumHabitaciones()%></p>
-                    <p>Fecha de construcción: <%=edificio.getAnioCons()%></p>
-                    <p>Tipo de construcción: <%=edificio.getTipoCons()%></p>
-                    <p>Valor estimado del mercado: <%=edificio.getValorMercado()%></p>
+                    <p>- Tipo de edificio: <%=edificio.getTipoVivienda()%></p>
+                    <p>- Número de habitaciones: <%=edificio.getNumHabitaciones()%></p>
+                    <p>- Fecha de construcción: <%=edificio.getAnioCons()%></p>
+                    <p>- Tipo de construcción: <%=edificio.getTipoCons()%></p>
+                    <p>- Valor estimado del mercado: <%=edificio.getValorMercado()%></p>
                     <br/>
             <%
                 }
@@ -62,9 +63,16 @@
                             siOno = "Sí";
                         }
                     %>
-                    <p>Cubrir daños accidentales: <%=siOno%></p>
-                    <p>Cantidad que se quiere asegurar: <%=contenido.getCantidadAse()%></p>
-                    <p>Franquicia: <%=contenido.getFranquicia()%></p>
+                    <p>- Cubrir daños accidentales: <%=siOno%></p>
+                    <p>- Cantidad que se quiere asegurar: <%=contenido.getCantidadAse()%></p>
+                    <%
+                        if(contenido.getFranquicia() == 0){
+                            franquicia = "Ninguna";
+                        }else{
+                            franquicia = Integer.toString(contenido.getFranquicia());
+                        }
+                    %>
+                    <p>- Franquicia: <%=franquicia%></p>
                     <br/>
                     
             <%
