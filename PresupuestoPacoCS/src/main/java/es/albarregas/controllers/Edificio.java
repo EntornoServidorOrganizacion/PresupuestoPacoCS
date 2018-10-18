@@ -94,15 +94,17 @@ public class Edificio extends HttpServlet {
         //CUOTA
         edificio.setPrima(CalcularCuota.primaEdificio(edificio));
         
-        //Obtenemos el objeto miEleccion de la sesion para saber si hay que pedir los datos de contenidos o no
-        eleccion = (EleccionBeans) sesion.getAttribute("eleccion");
+        //Obtenemos el objeto  de eleccion en la sesión
         //si contenido (boolean) es true, nos dirige a su formulario (contenidoo.jsp)
+        eleccion = (EleccionBeans) sesion.getAttribute("eleccion");
+        
         if(eleccion.isContenido()){
             url = "JSP/contenido.jsp";
         } else{
             url = "JSP/verCuota.jsp";
         }
         
+        //ponemos en sesión 
         sesion.setAttribute("edificio", edificio);
  
         //redirigimos a la url a la que se desea ir

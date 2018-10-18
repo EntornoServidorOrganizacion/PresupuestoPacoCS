@@ -79,7 +79,6 @@ public class Eleccion extends HttpServlet {
         //checkbox de edificio 
         if(request.getParameter("check1") != null){
             edificio = true;
-            //url = "JSP/edificio.jsp";
         }else{
             edificio = false;
         }
@@ -87,11 +86,11 @@ public class Eleccion extends HttpServlet {
         //checkbox de contenido.
         if (request.getParameter("check2") != null) {
             contenido = true;
-            //url = "JSP/contenido.jsp";
         }else{
             contenido = false;
         }
         
+        //modificar los atributos del beans EleccionBeans
         eleccion.setEdificio(edificio);
         eleccion.setContenido(contenido);
         

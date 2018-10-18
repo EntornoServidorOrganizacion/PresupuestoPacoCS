@@ -20,12 +20,13 @@
     <%
 
         HttpSession sesion = request.getSession();
+        //Obtener de la sesión
         EdificioBeans edificio = (EdificioBeans) sesion.getAttribute("edificio");
         ContenidoBeans contenido = (ContenidoBeans) sesion.getAttribute("contenido");
-        String mh;
-        String siOno;
-        String franquicia;
-        double total = 0;
+        String mh; //madera u hormigón
+        String siOno; //si o no se ha seleccionado la opción de daños accidentales
+        String franquicia; //mostrar la cantidad de la franquicia, si no se selecciona debe mostra ninguna
+        double total = 0; //nos muestra la cantidad de la o las primas
     %>
 
 
@@ -61,6 +62,7 @@
             <br/>
             <%
                 }
+                //añadimos una línea separadora <hr/> si están los dos seguros seleccionados
                 if (edificio != null && contenido != null) {
             %>
             <hr/>

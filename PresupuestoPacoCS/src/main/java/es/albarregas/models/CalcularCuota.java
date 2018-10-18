@@ -17,6 +17,7 @@ import es.albarregas.controllers.Eleccion;
 public class CalcularCuota {
 
     //CALCULO DE LA PRIMA DE EDIFICIO
+    //retorna la prima (double)
     public static double primaEdificio(EdificioBeans edificio) {
         double cuotaBasica;
         double prima = 0;
@@ -59,6 +60,7 @@ public class CalcularCuota {
     }
 
     //CALCULO DE LA PRIMA DEL CONTENIDO
+    //retorna la prima (double)
     public static double primaContenido(ContenidoBeans contenido) {
         double cuotaBasica;
         double prima = contenido.getCantidadAse() * 0.008;

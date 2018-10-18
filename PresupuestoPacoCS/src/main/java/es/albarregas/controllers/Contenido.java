@@ -87,6 +87,7 @@ public class Contenido extends HttpServlet {
         //CUOTA
         contenido.setPrima(CalcularCuota.primaContenido(contenido));
 
+        //Obtenemos el objeto  de eleccion en la sesión
         eleccion = (EleccionBeans) sesion.getAttribute("eleccion");
 
         //pasamos por sesión el objeto de ContenidoBeans 
