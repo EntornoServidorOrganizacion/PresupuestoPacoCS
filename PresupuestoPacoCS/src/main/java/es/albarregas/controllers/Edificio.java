@@ -86,6 +86,7 @@ public class Edificio extends HttpServlet {
         int valorMercado = Integer.parseInt(request.getParameter("valorMercado"));
         
         //introducir datos donde corresponde
+        // ESCRIBES MUCHO CODIGO PODRÍAS PONER edificio.setTipoVivienda(request.getParameter("tipoEdificio")) Y ASÍ SUCESIVAMENTE
         edificio.setTipoVivienda(tipoVivienda);
         edificio.setNumHabitaciones(numHabitaciones);
         edificio.setAnioCons(anioCons);

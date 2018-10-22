@@ -18,6 +18,7 @@ public class EdificioBeans implements Serializable{
     private int numHabitaciones;
     private int anioCons;
     private String tipoCons;
+    // ESTE ATRIBUTO ES DOUBLE
     private int valorMercado;
 
     /**

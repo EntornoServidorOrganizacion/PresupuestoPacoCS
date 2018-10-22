@@ -68,6 +68,7 @@ public class Contenido extends HttpServlet {
         processRequest(request, response);
 
         HttpSession sesion = request.getSession();
+        // NO HACE FALTA YA QUE DESDE AQUÍ SIEMPRE IREMOS A verCuota
         EleccionBeans eleccion = new EleccionBeans();
         String url = "JSP/verCuota.jsp";
         ContenidoBeans contenido = new ContenidoBeans();
@@ -91,6 +92,7 @@ public class Contenido extends HttpServlet {
         eleccion = (EleccionBeans) sesion.getAttribute("eleccion");
 
         //pasamos por sesión el objeto de ContenidoBeans 
+        // HEMOS DICHO QUE ESTE LO METEMOS EN LA PETICIÓN
         sesion.setAttribute("contenido", contenido);
 
         //redirigimos a la url a la que se desea ir

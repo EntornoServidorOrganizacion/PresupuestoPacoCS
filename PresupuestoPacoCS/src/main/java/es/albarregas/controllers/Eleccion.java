@@ -71,14 +71,16 @@ public class Eleccion extends HttpServlet {
         
         //volver al index si los dos checkbox están desmarcados
         if(request.getParameter("check1") == null && request.getParameter("check2") == null){
+            // UNA VEZ QUE SABEMOS QUE SE CUMPLE PARA QUE SEGUIR PREGUNTANDO. 
             url = "index.jsp";
-        }
+        } // AQUI CONTINUARIAMOS CON ELSE DENTRO DE ÉL LAS PREGUNTAS DE MAS ABAJO
 
         
         //comprobar los checkbox por separado
         //checkbox de edificio 
         if(request.getParameter("check1") != null){
             edificio = true;
+            // (1)
         }else{
             edificio = false;
         }
@@ -96,14 +98,16 @@ public class Eleccion extends HttpServlet {
         
         //si edificio (boolean) es true, nos dirige a su formulario (edificio.jsp)
         if(eleccion.isEdificio()){
+            // ESTA SENTENCIA LA PODIAS PONER EN (1) Y TE EVITAS LA PREGUNTA
             url = "JSP/edificio.jsp";
         }
         
         //si uno de los dos no está seleccionado, se irá al formulario correspondiente
-        if(eleccion.isEdificio() && eleccion.isContenido() == false){
+        if(eleccion.isEdificio() && eleccion.isContenido() == false){ // ESTA CONDICIÓN SERÍA eleccion.isEdificio() && !eleccion.isContenido()
             url = "JSP/edificio.jsp";
-            sesion.invalidate();
-        } else if(eleccion.isEdificio() == false && eleccion.isContenido()){
+            // QUE SENTIDO TIENE AQUI ANULAR LA SESIÓN
+//            sesion.invalidate(); LO DICHO SOBRA PORQUE SINO SALE ERROR 500 java.lang.IllegalStateException: setAttribute: La Sesión ya ha sido invalidada
+        } else if(eleccion.isEdificio() == false && eleccion.isContenido()){ // Y ESTA !eleccion.isEdificio() && eleccion.isContenido() 
             url = "JSP/contenido.jsp";
         }
         

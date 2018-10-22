@@ -38,6 +38,7 @@
                     total = total + edificio.getPrima();
             %>
             <h1>Seguro de edificio</h1>
+            <%-- A TODAS VISTAS ESTO ES <ul><li>...</li></ul> --%>
             <p>- Tipo de edificio: <%=edificio.getTipoVivienda()%></p>
             <p>- Número de habitaciones: <%=edificio.getNumHabitaciones()%></p>
             <p>- Fecha de construcción: <%=edificio.getAnioCons()%></p>
@@ -96,6 +97,7 @@
             <%
                 if (edificio != null) {
             %>
+            <%-- EXISTEN MEJORES FORMAS DE FORMATEAR UNA CANTIDAD --%>
             <p><small>(Total del seguro del contenido: <%=Math.round(contenido.getPrima() * 100.0) / 100.0%>€)</small></p>
 
             <%

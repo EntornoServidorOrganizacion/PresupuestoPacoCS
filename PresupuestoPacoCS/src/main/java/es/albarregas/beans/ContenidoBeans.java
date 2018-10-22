@@ -14,7 +14,9 @@ import java.io.Serializable;
  */
 public class ContenidoBeans implements Serializable{
     private boolean daniosAcc;
+    // ESTE ATRIBUTO ES DOUBLE
     private int cantidadAse; 
+    // ESTE ATRIBUTO ES DOUBLE
     private int franquicia; 
     private double prima;
     

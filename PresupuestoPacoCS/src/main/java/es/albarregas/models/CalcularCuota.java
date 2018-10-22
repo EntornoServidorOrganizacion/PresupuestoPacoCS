@@ -23,6 +23,7 @@ public class CalcularCuota {
         double prima = 0;
         cuotaBasica = edificio.getValorMercado() * 0.005;
 
+        // EXISTEN LAS SENTENCIAS switch QUE TE EVITAN TANTO IF
         if (edificio.getTipoVivienda().equals("piso")) {
             cuotaBasica = cuotaBasica * 0.95;
         } else if (edificio.getTipoVivienda().equals("casa")) {
