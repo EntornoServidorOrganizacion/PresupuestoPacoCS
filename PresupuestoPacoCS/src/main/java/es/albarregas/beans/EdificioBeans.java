@@ -5,7 +5,6 @@
  */
 package es.albarregas.beans;
 
-import es.albarregas.models.CalcularCuota;
 import java.io.Serializable;
 
 /**
@@ -18,8 +17,7 @@ public class EdificioBeans implements Serializable{
     private int numHabitaciones;
     private int anioCons;
     private String tipoCons;
-    // ESTE ATRIBUTO ES DOUBLE
-    private int valorMercado;
+    private double valorMercado;
 
     /**
      * @return the prima
@@ -94,14 +92,14 @@ public class EdificioBeans implements Serializable{
     /**
      * @return the valorMercado
      */
-    public int getValorMercado() {
+    public double getValorMercado() {
         return valorMercado;
     }
 
     /**
      * @param valorMercado the valorMercado to set
      */
-    public void setValorMercado(int valorMercado) {
+    public void setValorMercado(double valorMercado) {
         this.valorMercado = valorMercado;
     }
     

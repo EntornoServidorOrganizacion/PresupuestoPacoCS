@@ -24,35 +24,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "Edificio", urlPatterns = {"/Edificio"})
 public class Edificio extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -65,7 +36,6 @@ public class Edificio extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
         /**
          * se llama al modelo CalcularCuota y para finalizar se comprueba 
          * si se ha elegido la opción contenido en el Bean Eleccion. 
@@ -77,21 +47,13 @@ public class Edificio extends HttpServlet {
         String url = null;
         //pasarlo por sesión
         EdificioBeans edificio = new EdificioBeans();
-        
-        //Atributos necesarios, recogida de datos
-        String tipoVivienda = request.getParameter("tipoEdificio");
-        int numHabitaciones = Integer.parseInt(request.getParameter("habitaciones"));
-        int anioCons = Integer.parseInt(request.getParameter("fechaConstruccion"));
-        String tipoCons = request.getParameter("tipoCons");
-        int valorMercado = Integer.parseInt(request.getParameter("valorMercado"));
-        
+
         //introducir datos donde corresponde
-        // ESCRIBES MUCHO CODIGO PODRÍAS PONER edificio.setTipoVivienda(request.getParameter("tipoEdificio")) Y ASÍ SUCESIVAMENTE
-        edificio.setTipoVivienda(tipoVivienda);
-        edificio.setNumHabitaciones(numHabitaciones);
-        edificio.setAnioCons(anioCons);
-        edificio.setTipoCons(tipoCons);
-        edificio.setValorMercado(valorMercado);
+        edificio.setTipoVivienda(request.getParameter("tipoEdificio"));
+        edificio.setNumHabitaciones(Integer.parseInt(request.getParameter("habitaciones")));
+        edificio.setAnioCons(Integer.parseInt(request.getParameter("fechaConstruccion")));
+        edificio.setTipoCons(request.getParameter("tipoCons"));
+        edificio.setValorMercado(Double.parseDouble(request.getParameter("valorMercado")));
         //CUOTA
         edificio.setPrima(CalcularCuota.primaEdificio(edificio));
         
@@ -100,9 +62,9 @@ public class Edificio extends HttpServlet {
         eleccion = (EleccionBeans) sesion.getAttribute("eleccion");
         
         if(eleccion.isContenido()){
-            url = "JSP/contenido.jsp";
+            url = "JSPEL/contenido.jsp";
         } else{
-            url = "JSP/verCuota.jsp";
+            url = "JSPEL/verCuota.jsp";
         }
         
         //ponemos en sesión 
@@ -111,6 +73,7 @@ public class Edificio extends HttpServlet {
         //redirigimos a la url a la que se desea ir
         request.getRequestDispatcher(url).forward(request,response);
     }
+
 
     /**
      * Returns a short description of the servlet.

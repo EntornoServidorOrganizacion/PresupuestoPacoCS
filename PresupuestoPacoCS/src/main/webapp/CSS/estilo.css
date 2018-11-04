@@ -21,7 +21,6 @@ body{
     height: auto;
     margin-left: auto;
     margin-right: auto;
-
     margin-top: 2%;
     margin-bottom: 2%;
     font-family: SanFrancisco;
@@ -112,4 +111,31 @@ tr{
 }
 #enlaceMenu:hover{
     color: #000;
+}
+
+#menuJSP, #menuJSP a{
+    background-color: white;
+    color: black;
+    opacity: 0.9;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 50px;
+    text-decoration: none;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    transition: all 0.1s;
+}
+
+#menuJSP a:hover{
+    font-size: 55px;
+}
+
+#menuJSP{
+    box-shadow: 0 0 1em white;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-family: SanFrancisco;
 }

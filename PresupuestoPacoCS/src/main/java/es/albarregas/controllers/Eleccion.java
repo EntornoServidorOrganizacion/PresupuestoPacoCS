@@ -23,35 +23,6 @@ import javax.servlet.http.HttpSession;
 public class Eleccion extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
@@ -62,60 +33,50 @@ public class Eleccion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
         String url = null;
         EleccionBeans eleccion = new EleccionBeans();
         HttpSession sesion = request.getSession();
-        boolean edificio;
-        boolean contenido;
-        
-        //volver al index si los dos checkbox están desmarcados
-        if(request.getParameter("check1") == null && request.getParameter("check2") == null){
-            // UNA VEZ QUE SABEMOS QUE SE CUMPLE PARA QUE SEGUIR PREGUNTANDO. 
-            url = "index.jsp";
-        } // AQUI CONTINUARIAMOS CON ELSE DENTRO DE ÉL LAS PREGUNTAS DE MAS ABAJO
+        boolean edificio = false;
+        boolean contenido = false;
 
-        
-        //comprobar los checkbox por separado
-        //checkbox de edificio 
-        if(request.getParameter("check1") != null){
-            edificio = true;
-            // (1)
-        }else{
-            edificio = false;
+        //volver al index si los dos checkbox están desmarcados
+        if (request.getParameter("check1") == null && request.getParameter("check2") == null) {
+            url = "JSPEL/index.jsp";
+        } else {
+            //comprobar los checkbox por separado
+            //checkbox de edificio 
+            if (request.getParameter("check1") != null) {
+                edificio = true;
+                url = "JSPEL/edificio.jsp";
+            } else {
+                edificio = false;
+            }
+
+            //checkbox de contenido.
+            if (request.getParameter("check2") != null) {
+                contenido = true;
+            } else {
+                contenido = false;
+            }
         }
-        
-        //checkbox de contenido.
-        if (request.getParameter("check2") != null) {
-            contenido = true;
-        }else{
-            contenido = false;
-        }
-        
+
         //modificar los atributos del beans EleccionBeans
         eleccion.setEdificio(edificio);
         eleccion.setContenido(contenido);
         
-        //si edificio (boolean) es true, nos dirige a su formulario (edificio.jsp)
-        if(eleccion.isEdificio()){
-            // ESTA SENTENCIA LA PODIAS PONER EN (1) Y TE EVITAS LA PREGUNTA
-            url = "JSP/edificio.jsp";
-        }
         
         //si uno de los dos no está seleccionado, se irá al formulario correspondiente
-        if(eleccion.isEdificio() && eleccion.isContenido() == false){ // ESTA CONDICIÓN SERÍA eleccion.isEdificio() && !eleccion.isContenido()
-            url = "JSP/edificio.jsp";
-            // QUE SENTIDO TIENE AQUI ANULAR LA SESIÓN
-//            sesion.invalidate(); LO DICHO SOBRA PORQUE SINO SALE ERROR 500 java.lang.IllegalStateException: setAttribute: La Sesión ya ha sido invalidada
-        } else if(eleccion.isEdificio() == false && eleccion.isContenido()){ // Y ESTA !eleccion.isEdificio() && eleccion.isContenido() 
-            url = "JSP/contenido.jsp";
+        if(eleccion.isEdificio() && !eleccion.isContenido()){ 
+            url = "JSPEL/edificio.jsp";
+        } else if(!eleccion.isEdificio() && eleccion.isContenido()){
+            url = "JSPEL/contenido.jsp";
         }
-        
+
         //pasamos por sesión el objeto de EleccionBeans 
         sesion.setAttribute("eleccion", eleccion);
-        
+
         //redirigimos a la url a la que se desea ir
-        request.getRequestDispatcher(url).forward(request,response);
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**

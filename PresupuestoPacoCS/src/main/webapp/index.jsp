@@ -1,44 +1,27 @@
 <%-- 
     Document   : index
-    Created on : 15 oct. 2018, 17:38:36
+    Created on : 3 nov. 2018, 15:55:34
     Author     : paco
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
     <head>
+        <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="CSS/normalizer.css">
         <link rel="stylesheet" type="text/css" href="CSS/estilo.css">
-
-        <title>Seguros Correa</title>
     </head>
     <body>
         <%@include file = "../INC/cabecera.jsp" %>
-        <img id="imagenCabecera" src="IMAGE/imagenCabecera.png">
-        <div id="principal">
-
-            <form action="Eleccion" method="post">
-
-
-                <h1>Elija su seguro de confianza</h1>
-                <p>Por favor, elija que desea asegurar (marque uno sólo o los dos en las casillas)</p>
-                <br>
-                <p>¿Qué tipo de seguro desea?</p>
-                <input name="check1" value="ckEdificio" type="checkbox" checked="checked" />Seguro de edificios
-                <br>
-                <input name="check2" value="ckContenido" type="checkbox" checked="checked" />Seguro de contenido
-                <br><br>
-                <button type="submit" name="enviar" value="Enviar"/>Enviar
-
-
-            </form>
-
+        <div id="menuJSP">
+            <h1>Menú</h1>
+            <p><a href="JSP/index.jsp">- JSPStandar -</a></p>
+            <p><a href="JSPEL/index.jsp">- JSPEL -</a></p>
         </div>
-
-        <%@include file = "../INC/footer.jsp" %>
-
+        <footer>
+            <p>&copy;2018. Paco Correa Sánchez</p>
+        </footer>
     </body>
 </html>

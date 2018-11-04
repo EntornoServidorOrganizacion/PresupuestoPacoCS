@@ -1,6 +1,6 @@
 <%-- 
     Document   : contenido
-    Created on : 31 oct. 2018, 17:33:42
+    Created on : 31 oct. 2018, 17:34:34
     Author     : paco
 --%>
 
@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="../CSS/normalizer.css">
         <link rel="stylesheet" type="text/css" href="../CSS/estilo.css">
-        <title>Contenido JSPStandar</title>
+        <title>Contenido JSPEL</title>
     </head>
     <body>
         <%@include file = "../INC/cabecera.jsp" %>

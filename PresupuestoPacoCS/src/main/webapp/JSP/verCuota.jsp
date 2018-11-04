@@ -1,12 +1,11 @@
 <%-- 
     Document   : verCuota
-    Created on : 15 oct. 2018, 17:44:57
+    Created on : 31 oct. 2018, 17:34:06
     Author     : paco
 --%>
 
-<%@page import="es.albarregas.models.CalcularCuota"%>
-<%@page import="es.albarregas.beans.EdificioBeans"%>
 <%@page import="es.albarregas.beans.ContenidoBeans"%>
+<%@page import="es.albarregas.beans.EdificioBeans"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,22 +13,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="../CSS/normalizer.css">
         <link rel="stylesheet" type="text/css" href="../CSS/estilo.css">
-
+        <title>Cuota JSPStandar</title>
     </head>
-
-    <%
+        <%
 
         HttpSession sesion = request.getSession();
         //Obtener de la sesión
         EdificioBeans edificio = (EdificioBeans) sesion.getAttribute("edificio");
-        ContenidoBeans contenido = (ContenidoBeans) sesion.getAttribute("contenido");
+        ContenidoBeans contenido = (ContenidoBeans) request.getAttribute("contenido");
         String mh; //madera u hormigón
         String siOno; //si o no se ha seleccionado la opción de daños accidentales
         String franquicia; //mostrar la cantidad de la franquicia, si no se selecciona debe mostra ninguna
         double total = 0; //nos muestra la cantidad de la o las primas
     %>
-
-
     <body>
         <%@include file = "../INC/cabecera.jsp" %>
         <div id="principal">
@@ -89,7 +85,7 @@
                 if (contenido.getFranquicia() == 0) {
                     franquicia = "Ninguna";
                 } else {
-                    franquicia = Integer.toString(contenido.getFranquicia()) + "€";
+                    franquicia = Double.toString(Math.round(contenido.getFranquicia() *100.0/100.0)) + "€";
                 }
             %>
             <p>- Franquicia: <%=franquicia%></p>
@@ -111,8 +107,7 @@
             %>
 
             <h2>El TOTAL de su seguro es de: <%=Math.round(total * 100.0) / 100.0%>€</h2>
-            <button id="botonMenu" type="submit" name="menu" value="Menu"><a id="enlaceMenu" href="<%=request
-                    .getContextPath()%>/index.jsp">Menú</a> </button>
+            <button id="botonMenu" type="submit" name="menu" value="Menu"><a id="enlaceMenu" href="<%=request.getContextPath()%>/index.jsp">Menú</a> </button>
         </div>
         <%
             //invalidar sesión para que el resultado siempre se muestre correcto
@@ -121,4 +116,3 @@
         <%@include file = "../INC/footer.jsp" %>
     </body>
 </html>
-

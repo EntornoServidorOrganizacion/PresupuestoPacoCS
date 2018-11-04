@@ -1,6 +1,6 @@
 <%-- 
     Document   : edificio
-    Created on : 31 oct. 2018, 17:33:54
+    Created on : 31 oct. 2018, 17:34:49
     Author     : paco
 --%>
 
@@ -11,14 +11,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="../CSS/normalizer.css">
         <link rel="stylesheet" type="text/css" href="../CSS/estilo.css">
-        <title>Edificio JSPStandar</title>
+        <title>Edificio JSPEL</title>
     </head>
     <body>
         <%@include file = "../INC/cabecera.jsp" %>
 
         <div id="principal">
 
-            <form action="<%=request.getContextPath()%>/Edificio" method="post">
+            <form action="Edificio" method="post">
 
 
                 <h1>Detalle de la póliza de edificios</h1>

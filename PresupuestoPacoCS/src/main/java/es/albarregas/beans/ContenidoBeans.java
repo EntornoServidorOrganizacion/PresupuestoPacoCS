@@ -5,7 +5,6 @@
  */
 package es.albarregas.beans;
 
-import es.albarregas.models.CalcularCuota;
 import java.io.Serializable;
 
 /**
@@ -14,39 +13,51 @@ import java.io.Serializable;
  */
 public class ContenidoBeans implements Serializable{
     private boolean daniosAcc;
-    // ESTE ATRIBUTO ES DOUBLE
-    private int cantidadAse; 
-    // ESTE ATRIBUTO ES DOUBLE
-    private int franquicia; 
+    private double cantidadAse;
+    private double franquicia; 
     private double prima;
-    
-    
 
+    /**
+     * @return the daniosAcc
+     */
     public boolean isDaniosAcc() {
         return daniosAcc;
     }
 
+    /**
+     * @param daniosAcc the daniosAcc to set
+     */
     public void setDaniosAcc(boolean daniosAcc) {
         this.daniosAcc = daniosAcc;
     }
 
-    public int getCantidadAse() {
+    /**
+     * @return the cantidadAse
+     */
+    public double getCantidadAse() {
         return cantidadAse;
     }
 
-    public void setCantidadAse(int cantidadAse) {
+    /**
+     * @param cantidadAse the cantidadAse to set
+     */
+    public void setCantidadAse(double cantidadAse) {
         this.cantidadAse = cantidadAse;
     }
 
-    public int getFranquicia() {
+    /**
+     * @return the franquicia
+     */
+    public double getFranquicia() {
         return franquicia;
     }
 
-    public void setFranquicia(int franquicia) {
+    /**
+     * @param franquicia the franquicia to set
+     */
+    public void setFranquicia(double franquicia) {
         this.franquicia = franquicia;
     }
-
-    
 
     /**
      * @return the prima
@@ -61,8 +72,6 @@ public class ContenidoBeans implements Serializable{
     public void setPrima(double prima) {
         this.prima = prima;
     }
-
-    
     
     
 }

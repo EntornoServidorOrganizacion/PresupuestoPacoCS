@@ -25,36 +25,6 @@ import javax.servlet.http.HttpSession;
 public class Contenido extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-        //pasarlo por petición
-    }
-
-    /**
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
@@ -65,17 +35,11 @@ public class Contenido extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
 
-        HttpSession sesion = request.getSession();
-        // NO HACE FALTA YA QUE DESDE AQUÍ SIEMPRE IREMOS A verCuota
-        EleccionBeans eleccion = new EleccionBeans();
-        String url = "JSP/verCuota.jsp";
+        String url = "JSPEL/verCuota.jsp";
         ContenidoBeans contenido = new ContenidoBeans();
 
-        int cantidadAse = Integer.parseInt(request.getParameter("cantidadAsegurar"));
-        int franquicia = Integer.parseInt(request.getParameter("radio"));
-        
+
         //introducir datos donde corresponde
         if (request.getParameter("daniosAccidentales") != null) {
             contenido.setDaniosAcc(true);
@@ -83,21 +47,16 @@ public class Contenido extends HttpServlet {
             contenido.setDaniosAcc(false);
         }
 
-        contenido.setCantidadAse(cantidadAse);
-        contenido.setFranquicia(franquicia);
+        contenido.setCantidadAse(Double.parseDouble(request.getParameter("cantidadAsegurar")));
+        contenido.setFranquicia(Double.parseDouble(request.getParameter("radio")));
         //CUOTA
         contenido.setPrima(CalcularCuota.primaContenido(contenido));
 
-        //Obtenemos el objeto  de eleccion en la sesión
-        eleccion = (EleccionBeans) sesion.getAttribute("eleccion");
-
-        //pasamos por sesión el objeto de ContenidoBeans 
-        // HEMOS DICHO QUE ESTE LO METEMOS EN LA PETICIÓN
-        sesion.setAttribute("contenido", contenido);
+        //pasamos por peticion el objeto de ContenidoBeans 
+        request.setAttribute("contenido", contenido);
 
         //redirigimos a la url a la que se desea ir
         request.getRequestDispatcher(url).forward(request, response);
-
     }
 
     /**
@@ -106,8 +65,7 @@ public class Contenido extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String
-            getServletInfo() {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
